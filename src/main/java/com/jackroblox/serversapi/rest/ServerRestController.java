@@ -87,9 +87,11 @@ public class ServerRestController {
 	public boolean incrementPlayerCount(@PathVariable int userId, @RequestBody String inputJson) {
 		
 		JSONObject jsonObj = new JSONObject(inputJson);
+		System.out.println("===============>" + jsonObj);
 		
 		int incrementBy = jsonObj.getInt("incrementBy");
-	    
+		System.out.println("===============>" + incrementBy);
+		
 		ReservedServer server = employeeService.findByUserId(userId);
 		
 		if (server == null) {

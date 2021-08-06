@@ -20,11 +20,11 @@ import com.jackroblox.serversapi.service.ServerService;
 @RequestMapping("/api")
 public class ServerRestController {
 	
-	private ServerService employeeService;
+	private ServerService serverService;
 	
 	@Autowired
 	public ServerRestController(ServerService theEmployeeService) {
-		employeeService = theEmployeeService;
+		serverService = theEmployeeService;
 	}
 
 	
@@ -33,7 +33,7 @@ public class ServerRestController {
 	// =========================================	
 	@GetMapping("/servers")
 	public List<ReservedServer> findAny(){
-		return employeeService.findAny();
+		return serverService.findAny();
 		
 	}
 	
@@ -43,7 +43,7 @@ public class ServerRestController {
 	// =========================================	
 	@GetMapping("/servers/category/{category}")
 	public List<ReservedServer> getServersByCategory(@PathVariable String category) {
-		List<ReservedServer> servers = employeeService.findByCategory(category);
+		List<ReservedServer> servers = serverService.findByCategory(category);
 		
 		if (servers == null) {
 			System.out.println("No servers found for category - " + category);
@@ -58,7 +58,7 @@ public class ServerRestController {
 	// =========================================	
 	@GetMapping("/servers/{userId}")
 	public ReservedServer getServer(@PathVariable int userId) {
-		ReservedServer server = employeeService.findByUserId(userId);
+		ReservedServer server = serverService.findByUserId(userId);
 		
 		if (server == null) {
 			System.out.println("Server not found for User Id - " + userId);
@@ -74,7 +74,7 @@ public class ServerRestController {
 	@PostMapping("/servers")
 	public boolean addServer(@RequestBody ReservedServer server) {
 		
-		employeeService.save(server);
+		serverService.save(server);
 		
 		return true;
 	}
@@ -87,19 +87,17 @@ public class ServerRestController {
 	public boolean incrementPlayerCount(@PathVariable int userId, @RequestBody String inputJson) {
 		
 		JSONObject jsonObj = new JSONObject(inputJson);
-		System.out.println("===============>" + jsonObj);
 		
 		int incrementBy = jsonObj.getInt("incrementBy");
-		System.out.println("===============>" + incrementBy);
 		
-		ReservedServer server = employeeService.findByUserId(userId);
+		ReservedServer server = serverService.findByUserId(userId);
 		
 		if (server == null) {
 			System.out.println("Server not found for User Id - " + userId);
 		}
 	
 		
-		employeeService.incrementPlayerCount(userId, incrementBy);
+		serverService.incrementPlayerCount(userId, incrementBy);
 		
 		return true;
 	}
@@ -109,13 +107,13 @@ public class ServerRestController {
 	// =========================================	
 	@DeleteMapping("/servers/{userId}")
 	public boolean deleteServer(@PathVariable int userId) {
-		ReservedServer server = employeeService.findByUserId(userId);
+		ReservedServer server = serverService.findByUserId(userId);
 		
 		if (server == null) {
 			System.out.println("Server not found for User Id - " + userId);
 		}
 		
-		employeeService.deleteByUserId(userId);
+		serverService.deleteByUserId(userId);
 		
 		return true;
 	}

@@ -136,7 +136,7 @@ public class ServerDAOJpaImpl implements ServerDAO {
 						+ "WHERE rs.userId = :userId");
 		
 		query.setParameter("userId", userId);
-		query.setParameter("userId", incrementBy);
+		query.setParameter("incrementBy", incrementBy);
 		
 		query.executeUpdate();
 	}

@@ -13,6 +13,9 @@ public class ReservedServer {
 	@Column(name="user_id")
 	private int userId;
 	
+	@Column(name="username")
+	private String username;
+	
 	@Column(name="server_code")
 	private String serverCode;
 	
@@ -26,8 +29,9 @@ public class ReservedServer {
 		
 	}
 	
-	public ReservedServer(int userId, String serverCode, String category, int players) {
+	public ReservedServer(int userId, String username, String serverCode, String category, int players) {
 		this.userId = userId;
+		this.username = username;
 		this.serverCode = serverCode;
 		this.category = category;
 		this.players = players;
@@ -39,6 +43,14 @@ public class ReservedServer {
 
 	public void setUserId(int userId) {
 		this.userId = userId;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getServerCode() {
@@ -67,11 +79,9 @@ public class ReservedServer {
 
 	@Override
 	public String toString() {
-		return "ReservedServer [userId=" + userId + ", serverCode=" + serverCode + ", category=" + category
-				+ ", players=" + players + "]";
+		return "ReservedServer [userId=" + userId + ", username=" + username + ", serverCode=" + serverCode
+				+ ", category=" + category + ", players=" + players + "]";
 	}
-	
-	
-	
+
 	
 }

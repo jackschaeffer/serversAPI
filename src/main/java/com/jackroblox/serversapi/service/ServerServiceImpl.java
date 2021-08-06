@@ -52,5 +52,12 @@ public class ServerServiceImpl implements ServerService {
 		serverDAO.deleteByUserId(userId);
 	}
 
+	@Override
+	@Transactional
+	public void incrementPlayerCount(int userId, int incrementBy) {
+		serverDAO.incrementPlayerCount(userId, incrementBy);
+		
+	}
+
 
 }

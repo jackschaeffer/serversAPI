@@ -14,6 +14,8 @@ public List<ReservedServer> findAny();
 	
 	public void save(ReservedServer reservedServer);
 	
+	public void incrementPlayerCount(int userId, int incrementBy);
+	
 	public void deleteByUserId(int userId);
 
 }

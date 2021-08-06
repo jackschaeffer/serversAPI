@@ -79,6 +79,21 @@ public class ServerRestController {
 	}
 	
 	
+	// =========================================	
+	// Expose endpoint for incrementing player count of a server
+	// =========================================	
+	@PutMapping("/servers/{userId}")
+	public boolean incrementPlayerCount(@PathVariable int userId, @RequestBody int incrementBy) {
+		ReservedServer server = employeeService.findByUserId(userId);
+		
+		if (server == null) {
+			System.out.println("Server not found for User Id - " + userId);
+		}
+		
+		employeeService.incrementPlayerCount(userId, incrementBy);
+		
+		return true;
+	}
 	
 	// =========================================	
 	// Expose endpoint for deleting a server

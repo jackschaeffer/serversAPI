@@ -12,6 +12,8 @@ public interface ServerDAO {
 	
 	public ReservedServer findByUserId(int userId);
 	
+	public void incrementPlayerCount(int userId, int incrementBy);
+	
 	public void save(ReservedServer reservedServer);
 	
 	public void deleteByUserId(int userId);

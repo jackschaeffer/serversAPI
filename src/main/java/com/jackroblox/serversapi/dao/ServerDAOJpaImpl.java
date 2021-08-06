@@ -120,4 +120,25 @@ public class ServerDAOJpaImpl implements ServerDAO {
 
 	}
 
+
+	// =========================================		
+	//	INCREMENT PLAYER COUNT
+	// =========================================	
+	// Increment the server player count
+	// Will increment or decrement depending on value passed in
+	
+	@Override
+	public void incrementPlayerCount(int userId, int incrementBy) {
+		
+		Query query = entityManager.createQuery
+				("UPDATE ReservedServer rs "
+						+ "set rs.players = rs.players + :incrementBy "
+						+ "WHERE rs.userId = :userId");
+		
+		query.setParameter("userId", userId);
+		query.setParameter("userId", incrementBy);
+		
+		query.executeUpdate();
+	}
+
 }

@@ -11,7 +11,7 @@ public class ReservedServer {
 	
 	@Id
 	@Column(name="user_id")
-	private int userId;
+	private long userId;
 	
 	@Column(name="username")
 	private String username;
@@ -29,7 +29,7 @@ public class ReservedServer {
 		
 	}
 	
-	public ReservedServer(int userId, String username, String serverCode, String category, int players) {
+	public ReservedServer(long userId, String username, String serverCode, String category, int players) {
 		this.userId = userId;
 		this.username = username;
 		this.serverCode = serverCode;
@@ -37,11 +37,11 @@ public class ReservedServer {
 		this.players = players;
 	}
 
-	public int getUserId() {
+	public long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(long userId) {
 		this.userId = userId;
 	}
 

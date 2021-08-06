@@ -57,7 +57,7 @@ public class ServerRestController {
 	// Expose endpoint for getting server by User Id
 	// =========================================	
 	@GetMapping("/servers/{userId}")
-	public ReservedServer getServer(@PathVariable int userId) {
+	public ReservedServer getServer(@PathVariable long userId) {
 		ReservedServer server = serverService.findByUserId(userId);
 		
 		if (server == null) {
@@ -84,7 +84,7 @@ public class ServerRestController {
 	// Expose endpoint for incrementing player count of a server
 	// =========================================	
 	@PutMapping("/servers/{userId}")
-	public boolean incrementPlayerCount(@PathVariable int userId, @RequestBody String inputJson) {
+	public boolean incrementPlayerCount(@PathVariable long userId, @RequestBody String inputJson) {
 		
 		JSONObject jsonObj = new JSONObject(inputJson);
 		
@@ -106,7 +106,7 @@ public class ServerRestController {
 	// Expose endpoint for deleting a server
 	// =========================================	
 	@DeleteMapping("/servers/{userId}")
-	public boolean deleteServer(@PathVariable int userId) {
+	public boolean deleteServer(@PathVariable long userId) {
 		ReservedServer server = serverService.findByUserId(userId);
 		
 		if (server == null) {

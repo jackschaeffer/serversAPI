@@ -10,12 +10,12 @@ public interface ServerDAO {
 	
 	public List<ReservedServer> findByCategory(String category);
 	
-	public ReservedServer findByUserId(int userId);
+	public ReservedServer findByUserId(long userId);
 	
-	public void incrementPlayerCount(int userId, int incrementBy);
+	public void incrementPlayerCount(long userId, int incrementBy);
 	
 	public void save(ReservedServer reservedServer);
 	
-	public void deleteByUserId(int userId);
+	public void deleteByUserId(long userId);
 
 }

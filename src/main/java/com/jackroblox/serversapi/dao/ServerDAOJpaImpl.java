@@ -78,7 +78,7 @@ public class ServerDAOJpaImpl implements ServerDAO {
 	// UserId is the primary key
 	
 	@Override
-	public ReservedServer findByUserId(int userId) {
+	public ReservedServer findByUserId(long userId) {
 		
 		ReservedServer server = 
 				entityManager.find(ReservedServer.class, userId);
@@ -95,8 +95,6 @@ public class ServerDAOJpaImpl implements ServerDAO {
 	@Override
 	public void save(ReservedServer reservedServer) {
 		
-		System.out.println("DAO");
-		
 		entityManager.merge(reservedServer);
 
 	}
@@ -109,7 +107,7 @@ public class ServerDAOJpaImpl implements ServerDAO {
 	// UserId is the primary key
 
 	@Override
-	public void deleteByUserId(int userId) {
+	public void deleteByUserId(long userId) {
 		
 		Query query = entityManager.createQuery(
 				"delete from ReservedServer where userId=:userId");
@@ -128,7 +126,7 @@ public class ServerDAOJpaImpl implements ServerDAO {
 	// Will increment or decrement depending on value passed in
 	
 	@Override
-	public void incrementPlayerCount(int userId, int incrementBy) {
+	public void incrementPlayerCount(long userId, int incrementBy) {
 		
 		Query query = entityManager.createQuery
 				("UPDATE ReservedServer rs "

@@ -36,7 +36,7 @@ public class ServerServiceImpl implements ServerService {
 
 	@Override
 	@Transactional
-	public ReservedServer findByUserId(int userId) {
+	public ReservedServer findByUserId(long userId) {
 		return serverDAO.findByUserId(userId);
 	}
 
@@ -48,13 +48,13 @@ public class ServerServiceImpl implements ServerService {
 
 	@Override
 	@Transactional
-	public void deleteByUserId(int userId) {
+	public void deleteByUserId(long userId) {
 		serverDAO.deleteByUserId(userId);
 	}
 
 	@Override
 	@Transactional
-	public void incrementPlayerCount(int userId, int incrementBy) {
+	public void incrementPlayerCount(long userId, int incrementBy) {
 		serverDAO.incrementPlayerCount(userId, incrementBy);
 		
 	}

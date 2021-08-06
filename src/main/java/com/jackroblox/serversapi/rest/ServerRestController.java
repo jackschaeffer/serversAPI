@@ -2,6 +2,7 @@ package com.jackroblox.serversapi.rest;
 
 import java.util.List;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -83,7 +84,12 @@ public class ServerRestController {
 	// Expose endpoint for incrementing player count of a server
 	// =========================================	
 	@PutMapping("/servers/{userId}")
-	public boolean incrementPlayerCount(@PathVariable int userId, @RequestBody int incrementBy) {
+	public boolean incrementPlayerCount(@PathVariable int userId, @RequestBody String inputJson) {
+		
+		JSONObject jsonObj = new JSONObject(inputJson);
+		
+		int incrementBy = jsonObj.getInt("incrementBy");
+	    
 		ReservedServer server = employeeService.findByUserId(userId);
 		
 		if (server == null) {
